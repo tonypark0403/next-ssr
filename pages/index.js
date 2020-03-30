@@ -4,7 +4,7 @@ import axios from 'axios';
 import MainLayout from '../components/layouts/mainLayout';
 
 class Home extends Component {
-    static async getInitialProps() {
+    static async getInitialProps({ pathname, query, asPath, req, res }) { //(context)
         //console.log("getInitialProps")
         let userData;
         try {
@@ -14,6 +14,9 @@ class Home extends Component {
         } catch {
             console.log('server error');
         }
+
+        // console.log(context);
+
         return {
             user: {
                 name: 'Tony',
